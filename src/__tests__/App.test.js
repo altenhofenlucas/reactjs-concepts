@@ -32,7 +32,7 @@ describe("App component", () => {
 
     await actWait();
 
-    fireEvent.click(getByText("Adicionar"));
+    fireEvent.click(getByTestId("add-new-repository-button"));
 
     await actWait();
 
@@ -42,7 +42,7 @@ describe("App component", () => {
   });
 
   it("should be able to remove repository", async () => {
-    const { getByText, getByTestId } = render(<App />);
+    const { getByTestId } = render(<App />);
 
     apiMock.onGet("repositories").reply(200, [
       {
@@ -57,7 +57,7 @@ describe("App component", () => {
 
     await actWait();
 
-    fireEvent.click(getByText("Remover"));
+    fireEvent.click(getByTestId("remove-repository-button"));
 
     await actWait();
 
