@@ -5,7 +5,7 @@ import './styles.css';
 
 function App() {
   const [repositories, setRepositories] = useState([]);
-  const [newRepository, setNewRepository] = useState({ title: null });
+  const [newRepository, setNewRepository] = useState({});
 
   useEffect(() => {
     api.get('/repositories').then(response => {
@@ -28,10 +28,8 @@ function App() {
     });
     const repository = response.data;
     
-    console.log(newRepository);
-    
     setRepositories([...repositories, repository]);
-    setNewRepository({ title: null });
+    setNewRepository({});
   }
 
   async function handleRemoveRepository(id) {
@@ -39,7 +37,7 @@ function App() {
 
     const repoIndex = repositories.findIndex(repo => repo.id === id);
     repositories.splice(repoIndex, 1);
-    
+
     setRepositories([...repositories]);
   }
 
@@ -68,6 +66,7 @@ function App() {
           Title:
           <input 
             type="text"
+            data-testid="add-new-repository-title"
             onChange={ handleInputRepositoryChange } />
         </label>
         <button 

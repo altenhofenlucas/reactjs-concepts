@@ -32,6 +32,9 @@ describe("App component", () => {
 
     await actWait();
 
+    fireEvent.change(getByTestId("add-new-repository-title"), { target: { value: 'Testing' } })
+
+
     fireEvent.click(getByTestId("add-new-repository-button"));
 
     await actWait();
