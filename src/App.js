@@ -5,7 +5,6 @@ import './styles.css';
 
 function App() {
   const [repositories, setRepositories] = useState([]);
-  const [newRepository, setNewRepository] = useState({});
 
   useEffect(() => {
     api.get('/repositories').then(response => {
@@ -13,23 +12,14 @@ function App() {
     });
   }, []);
 
-  function handleInputRepositoryChange(event) {
-    setNewRepository({ title: event.target.value });
-  }
-
   async function handleAddRepository() {
-    if (!newRepository || !newRepository.title) {
-      return;
-    }
-
     const response = await api.post('/repositories', {
-      title: newRepository.title,
+      title: `New Repository From ReactJS - ${Date.now()}`,
       owner: 'ReactJS User',
     });
     const repository = response.data;
     
     setRepositories([...repositories, repository]);
-    setNewRepository({});
   }
 
   async function handleRemoveRepository(id) {
@@ -50,10 +40,8 @@ function App() {
               return (
                 <li key={ repo.id }>
                   { repo.title }
-                  <button 
-                    data-testid="remove-repository-button"
-                    onClick={ () => handleRemoveRepository(repo.id) }>
-                    { "Remove" }
+                  <button onClick={ () => handleRemoveRepository(repo.id) }>
+                    { "Remover" }
                   </button>
                 </li>
               )
@@ -61,20 +49,7 @@ function App() {
         }
       </ul>
       
-      <div id="form">
-        <label>
-          Title:
-          <input 
-            type="text"
-            data-testid="add-new-repository-title"
-            onChange={ handleInputRepositoryChange } />
-        </label>
-        <button 
-          data-testid="add-new-repository-button"
-          onClick={ () => handleAddRepository(newRepository) }>
-            { "Add repository" }
-        </button>
-      </div>
+      <button onClick={handleAddRepository}>Adicionar</button>
     </div>
   );
 }

@@ -38,35 +38,3 @@ div li button {
   margin: 0 15px;
   background: #ca4949;
 }
-
-#form {
-  width: 100%;
-  margin: 50px 0px 0px 0px;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  min-width: 200px;
-  max-width: 350px;
-
-  border: 2px solid #7159c1;
-  border-radius: 3px 3px 3px 3px;
-  -webkit-border-radius: 3px 3px 3px 3px;
-  -moz-border-radius: 3px 3px 3px 3px;
-}
-
-#form label input {
-  width: auto;
-  display: flex;
-  min-width: 100%;
-
-  padding: 3px;
-  font-size: 14px;
-  border: 2px solid #ccc;
-  border-radius: 3px 3px 3px 3px;
-  -webkit-border-radius: 3px 3px 3px 3px;
-  -moz-border-radius: 3px 3px 3px 3px;
-}
-
-#form button {
-  width: auto;
-}
